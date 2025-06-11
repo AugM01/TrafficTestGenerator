@@ -54,17 +54,17 @@ In other words, given a fixed initial condition, the framework outputs a set of 
 --- -->
 
 <p align="center">
-  <img src="imgs\animation_1073_gif.gif" alt="Poster Preview" width="80%"/>
+  <img src="imgs\1073_gif.gif" alt="Poster Preview" width="600"/>
 </p>
 <p align="center">
-  <img src="imgs\1007_gif.gif" alt="Poster Preview" width="80%"/>
+  <img src="imgs\1007_gif.gif" alt="Poster Preview" width="600"/>
 </p>
 <p align="center">
-  <img src="imgs\1036_gif.gif" alt="Poster Preview" width="80%"/>
+  <img src="imgs\1036_gif.gif" alt="Poster Preview" width="600"/>
 </p>
 <p align="center">
-  <img src="imgs\1062_gif.gif" alt="Poster Preview" width="80%"/>
+  <img src="imgs\1062_gif.gif" alt="Poster Preview" width="600"/>
 </p>
 <p align="center">
-  <img src="imgs\1067_gif.gif" alt="Poster Preview" width="80%"/>
+  <img src="imgs\1067_gif.gif" alt="Poster Preview" width="600"/>
 </p>
