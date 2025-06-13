@@ -3,9 +3,11 @@
 
 ## Project Overview
 
-This project introduces an **automated framework to generate diverse, realistic, and safety-critical test scenarios** for evaluating autonomous vehicle (AV) planners in interactive traffic situations. Unlike prior approaches that often trade off realism for adversariality or lack efficiency in exploring behaviors, this method unifies realism, criticality, interactivity, and diversity within a single scalable pipeline.
+This project introduces an **automated framework to generate diverse, realistic, and safety-critical test scenarios** for evaluating autonomous vehicle (AV) planners in interactive traffic situations. 
 
 The key idea lies in exploiting a **promptable traffic model**, [ProSim](https://arxiv.org/abs/2409.05863), to **parametrize complex human driver behaviors through low-dimensional final position goal prompts**. These goal prompts are then optimized using **Bayesian Optimization (BO)** to efficiently discover critical yet plausible interactions that challenge the AV planner in **closed-loop simulations**.
+
+Unlike prior approaches that often trade off realism for adversariality or lack efficiency in exploring behaviors, this method unifies realism, criticality, interactivity, and diversity within a single scalable pipeline.
 
 <p align="center">
   <img src="imgs/overview.png" alt="Poster Preview" width="600"/>
