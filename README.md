@@ -1,39 +1,34 @@
 
 # Test Automation for Interactive Scenarios via Promptable Traffic Simulation
 
-## Paper Summary
+## Project Overview
 
-**Test Automation for Interactive Scenarios via Promptable Traffic Simulation**
+This project introduces an **automated framework to generate diverse, realistic, and safety-critical test scenarios** for evaluating autonomous vehicle (AV) planners in interactive traffic situations. Unlike prior approaches that often trade off realism for adversariality or lack efficiency in exploring behaviors, this method unifies realism, criticality, interactivity, and diversity within a single scalable pipeline.
 
-Autonomous vehicle (AV) planners must be rigorously tested to ensure safe deployment, particularly in interactive scenarios involving uncertain human behavior. This work proposes a novel framework for **automatically generating realistic, diverse, and safety-critical test scenarios** using a **data-driven traffic simulator (ProSim)**.
+The key idea lies in exploiting a **promptable traffic model**, [ProSim](https://arxiv.org/abs/2409.05863), to **parametrize complex human driver behaviors through low-dimensional final position goal prompts**. These goal prompts are then optimized using **Bayesian Optimization (BO)** to efficiently discover critical yet plausible interactions that challenge the AV planner in **closed-loop simulations**.
 
-Existing approaches often struggle to balance the competing objectives of realism, interactivity, diversity, controllability, and efficiency, typically favoring one at the expense of the others. This work addresses that challenge by unifying these aspects within a single, scalable system.
+<p align="center">
+  <img src="imgs/overview.png" alt="Poster Preview" width="600"/>
+</p>
+<p align="center"><em>Figure 1: Overview of the proposed framework with Prompt Generator, Episode Generator, and Episode Scorer modules.</em></p>
 
-This paper proposes a framework to overcome this tradeoff. The key idea is to leverage a **promptable traffic model** to **parametrize complex human driver behaviors** through **low-dimensional final position goal prompts**, and to simulate their interactions with an AV in **closed-loop**. A **Bayesian Optimization (BO)** module then efficiently explores the space of goal prompts to assign to other agents to uncover scenarios that stress-test the AV planner.
+The framework is composed of three modules:
+- **Prompt Generator**, which uses Bayesian Optimization to to search for critical goal prompts
+- **Episode Generator**, generates simulations where the AV planner is tested against other agents governed by [ProSim](https://arxiv.org/abs/2409.05863) in a closed-loop manner.
+- **Episode Scorer**, which quantifies criticality and feeds it back into BO.
+
+<!-- <p align="center">
+  <img src="imgs/goal_domain.png" alt="Poster Preview" width="600"/>
+</p> -->
 
 ### Main Contributions
 - **Modular pipeline** for automated planner evaluation using goal-based behavioral prompts.
 - **Efficient discovery** of safety-critical interactions via BO over a low-dimensional domain.
 - **Planner-agnostic** design: applicable to any AV planner with minimal assumptions.
 
----
 
-## Method Overview
-<!-- ![Method Overview](Imgs_Paper/overview.png) -->
-<p align="center">
-  <img src="imgs/overview.png" alt="Poster Preview" width="600"/>
-</p>
-
-This framework is composed of three main modules:
-- **Prompt Generator**: given fixed initial conditions, this module uses Bayesian Optimization to efficiently identify critical goal prompts for other agents within a low-dimensional domain to give as input to a promptable traffic simulator.
-- **Episode Generator**: generates simulations where the AV planner is tested against other agents governed by [ProSim](https://arxiv.org/abs/2409.05863) in a closed-loop manner.
-- **Episode Scorer**: evaluates criticality and informativeness of generated episodes by assigning a score which will be used to guide BO in the next iterations.
-
-In other words, given a fixed initial condition, the framework outputs a set of informative and safety-critical episodes by optimizing over a user-defined domain the final goal to give to other agents.
-<!-- ![Goal Domain](Imgs_Report/3_methodology/bayesian_optimization/goal_domain.png) -->
-<p align="center">
-  <img src="imgs/goal_domain.png" alt="Poster Preview" width="600"/>
-</p>
+### TL;DR
+Given a fixed (yet customizable) initial scene configuration, the framework automatically generates a **set of informative and safety-critical episodes** by optimizing the final goals of surrounding agents using Bayesian Optimization. These episodes are tailored to stress-test the AV planner in realistic, closed-loop simulations.
 
 ---
 
@@ -53,18 +48,23 @@ In other words, given a fixed initial condition, the framework outputs a set of 
 
 --- -->
 
+Below are showed a few examples of generated episodes featuring a collision between the ego agent governed by the planner and one other agent governed by [ProSim](https://arxiv.org/abs/2409.05863). In yellow is shown the planner's prediction of the other agent current state, updated at 2Hz and instrumental in analyzing the causes of the collision.
+
+In the first two videos, the collision results from the other agent's sudden braking and the planner’s incorrect assumption about its velocity. This type of behavior is common in real-world scenarios and may be triggered by events such as an **animal crossing** or an unexpected road hazard like a **large pothole**.
 <p align="center">
   <img src="imgs\1007_gif.gif" alt="Poster Preview" width="600"/>
 </p>
 <p align="center">
   <img src="imgs\1036_gif.gif" alt="Poster Preview" width="600"/>
 </p>
+
+In the next two videos, the collision is caused by a deliberate maneuver of the other agent, which intentionally collides with the ego vehicle. While these incidents are clearly not the planner's fault, they are valuable for exposing its **limited ability to react to unexpected threats from behind**. Such behaviors can arise from not-so-uncommon real-world causes, including driver **distraction**, **falling asleep** at the wheel, or sudden health issues.
 <p align="center">
   <img src="imgs\1062_gif.gif" alt="Poster Preview" width="600"/>
 </p>
 <p align="center">
   <img src="imgs\1067_gif.gif" alt="Poster Preview" width="600"/>
 </p>
-<p align="center">
+<!-- <p align="center">
   <img src="imgs\1073_gif.gif" alt="Poster Preview" width="600"/>
-</p>
+</p> -->
