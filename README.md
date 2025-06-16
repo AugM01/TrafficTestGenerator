@@ -32,41 +32,65 @@ The framework is composed of three modules:
 ### TL;DR
 Given a fixed (yet customizable) initial scene configuration, the framework automatically generates a **set of informative and safety-critical episodes** by optimizing the final goals of surrounding agents using Bayesian Optimization. These episodes are tailored to stress-test the AV planner in realistic, closed-loop simulations.
 
----
 
-## Examples of Generated Episodes
 
-<!-- ### 🧪 Experimental Setup
-- **AV Planner**: MPC-based (2 Hz), assumes constant-velocity, lane-centered behavior of others.
-- **Simulator**: [ProSim](https://arxiv.org/abs/2409.05863) (pretrained, no fine-tuning), adapted for [CommonRoad](https://commonroad.in.tum.de/).
-- **Scenarios**: 3 highway settings with different initial configurations of one other vehicle.
-    -  **Front**: Other agent is in front of the AV in the same lane |
-    - **Front-Right**: Other agent is ahead, in the adjacent right lane |
-    - **Behind**: Other agent is in the same lane, but behind the AV |
-- **Optimization**: 75 BO iterations per scenario (Matern kernel, UCB acquisition).
-- **Metrics**:
-  - **Safety-Criticality**: Collision rate, Min. Distance, Time-To-Collision (TTC)
-  - **Diversity**: Average pairwise trajectory distance (ego & other agent)
+## Experiments
 
---- -->
+Three highway settings with different initial configurations of a single other vehicle. We proceed to run 75 iterations of Bayesian OptimizationFor each experiment, the image on the left shows the **initial scene setup**, while the image on the right displays the final **Gaussian Process mean** after **75 iterations of Bayesian Optimization**. 
 
-Below are showed a few examples of generated episodes featuring a collision between the ego agent governed by the planner and one other agent governed by [ProSim](https://arxiv.org/abs/2409.05863). In yellow is shown the planner's prediction of the other agent current state, updated at 2Hz and instrumental in analyzing the causes of the collision.
-
-In the first two videos, the collision results from the other agent's sudden braking and the planner’s incorrect assumption about its velocity. This type of behavior is common in real-world scenarios and may be triggered by events such as an **animal crossing** or an unexpected road hazard like a **large pothole**.
-<p align="center">
-  <img src="imgs\1007_gif.gif" alt="Poster Preview" width="600"/>
+<!-- Row 1 -->
+<div style="display: flex; gap: 20px; justify-content: center; align-items: center; margin-bottom: 5px;">
+  <img src="imgs/init1.png" alt="Initialization 1" style="width:30%;">
+  <img src="imgs/exp1_GP.png" alt="GP Mean 1" style="width:60%;">
+</div>
+<p style="text-align: center; margin-bottom: 30px;">
+  <em>Experiment 1: Other agent is in front of the AV in the same lane.</em>
 </p>
-<p align="center">
-  <img src="imgs\1036_gif.gif" alt="Poster Preview" width="600"/>
+<!-- Row 2 -->
+<div style="display: flex; gap: 20px; justify-content: center; align-items: center; margin-bottom: 5px;">
+  <img src="imgs/init2.png" alt="Initialization 2" style="width:30%;">
+  <img src="imgs/exp2_GP.png" alt="GP Mean 2" style="width:60%;">
+</div>
+<p style="text-align: center; margin-bottom: 30px;">
+  <em>Experiment 2: Other agent is ahead, in the adjacent right lane.</em>
 </p>
+<!-- Row 3 -->
+<div style="display: flex; gap: 20px; justify-content: center; align-items: center; margin-bottom: 5px;">
+  <img src="imgs/init3.png" alt="Initialization 3" style="width:30%;">
+  <img src="imgs/exp3_GP.png" alt="GP Mean 3" style="width:60%;">
+</div>
+<p style="text-align: center; margin-bottom: 30px;">
+  <em>Experiment 1: Other agent is in the same lane, but behind the AV.</em>
+</p>
+
+
+### Examples of Generated Episodes
+
+Below are showed a few examples of generated episodes featuring a collision between the ego agent governed by the planner and one other agent governed by [ProSim](https://arxiv.org/abs/2409.05863). These samples are drawn from Experiments 2 and 3.
+
+In the first two videos, the collision occurs due to the other agent’s sudden braking and the planner’s incorrect assumption that the agent would maintain its speed. Such behaviors are common in real-world driving and can result from situations like an **animal crossing** or a **large pothole**.
+In both cases, the ego agent initiates a lane change to the right to reach its goal further along the adjacent lane.
+
+To assist with analysis, the planner’s prediction of the other agent’s state, updated at 2 Hz, is shown in **yellow**.
+
+<div style="display: flex; justify-content: center; gap: 40px; align-items: center;">
+  <img src="imgs/1036_gif.gif" alt="Video 1" width="40%">
+  <img src="imgs/1007_gif.gif" alt="Video 2" width="40%">
+</div>
+<p align="center">
+  <em>
+    The planner initiates a lane change to the right to reach its goal, incorrectly assuming the other agent maintains speed. Collision occurs after the other agent suddenly brakes.
+  </em>
+</p>
+
 
 In the next two videos, the collision is caused by a deliberate maneuver of the other agent, which intentionally collides with the ego vehicle. While these incidents are clearly not the planner's fault, they are valuable for exposing its **limited ability to react to unexpected threats from behind**. Such behaviors can arise from not-so-uncommon real-world causes, including driver **distraction**, **falling asleep** at the wheel, or sudden health issues.
+<div style="display: flex; justify-content: center; gap: 40px; align-items: center;">
+  <img src="imgs/1062_gif.gif" alt="Video 1" width="40%">
+  <img src="imgs/1067_gif.gif" alt="Video 2" width="40%">
+</div>
 <p align="center">
-  <img src="imgs\1062_gif.gif" alt="Poster Preview" width="600"/>
+  <em>
+    The other agent collides with the ego vehicle from behind, revealing the planner’s limited ability to react to unexpected rear threats.
+  <em>
 </p>
-<p align="center">
-  <img src="imgs\1067_gif.gif" alt="Poster Preview" width="600"/>
-</p>
-<!-- <p align="center">
-  <img src="imgs\1073_gif.gif" alt="Poster Preview" width="600"/>
-</p> -->
