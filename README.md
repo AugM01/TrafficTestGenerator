@@ -1,6 +1,13 @@
 
 # Test Automation for Interactive Scenarios via Promptable Traffic Simulation
 
+## Table of Contents
+
+- [Project Overview](#project-overview)
+  - [Main Contributions](#main-contributions)
+- [Experiments](#experiments)
+  - [Examples of Generated Episodes](#examples-of-generated-episodes)
+
 ## Project Overview
 
 This project introduces an **automated framework to generate diverse, realistic, and safety-critical test scenarios** for evaluating autonomous vehicle (AV) planners in interactive traffic situations. 
