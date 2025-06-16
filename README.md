@@ -41,27 +41,27 @@ Three highway settings with different initial configurations of a single other v
 
 <!-- Row 1 -->
 <div style="display: flex; gap: 20px; justify-content: center; align-items: center; margin-bottom: 5px;">
-  <img src="imgs/init1.png" alt="Initialization 1" style="width:30%;">
-  <img src="imgs/exp1_GP.png" alt="GP Mean 1" style="width:60%;">
+  <img src="imgs/init1.png" alt="Initialization 1" style="width: min(30%,300px);">
+  <img src="imgs/exp1_GP.png" alt="GP Mean 1" style="width: min(60%,600px);">
 </div>
 <p style="text-align: center; margin-bottom: 30px;">
-  <em>Experiment 1: Other agent is in front of the AV in the same lane.</em>
+  <em>Experiment 1: Other agent is in front of the ego agent, in the same lane.</em>
 </p>
 <!-- Row 2 -->
 <div style="display: flex; gap: 20px; justify-content: center; align-items: center; margin-bottom: 5px;">
-  <img src="imgs/init2.png" alt="Initialization 2" style="width:30%;">
-  <img src="imgs/exp2_GP.png" alt="GP Mean 2" style="width:60%;">
+  <img src="imgs/init2.png" alt="Initialization 2" style="width: min(30%,300px);">
+  <img src="imgs/exp2_GP.png" alt="GP Mean 2" style="width: min(60%,600px);">
 </div>
 <p style="text-align: center; margin-bottom: 30px;">
-  <em>Experiment 2: Other agent is ahead, in the adjacent right lane.</em>
+  <em>Experiment 2: Other agent is ahead the ego agent, in the adjacent right lane.</em>
 </p>
 <!-- Row 3 -->
 <div style="display: flex; gap: 20px; justify-content: center; align-items: center; margin-bottom: 5px;">
-  <img src="imgs/init3.png" alt="Initialization 3" style="width:30%;">
-  <img src="imgs/exp3_GP.png" alt="GP Mean 3" style="width:60%;">
+  <img src="imgs/init3.png" alt="Initialization 3" style="width: min(30%,300px);">
+  <img src="imgs/exp3_GP.png" alt="GP Mean 3" style="width: min(60%,600px);">
 </div>
 <p style="text-align: center; margin-bottom: 30px;">
-  <em>Experiment 3: Other agent is in the same lane, but behind the AV.</em>
+  <em>Experiment 3: Other agent is in the same lane, but behind the ego agent.</em>
 </p>
 
 
@@ -75,8 +75,8 @@ In both cases, the ego agent initiates a lane change to the right to reach its g
 To assist with analysis, the planner’s prediction of the other agent’s state, updated at 2 Hz, is shown in **yellow**.
 
 <div style="display: flex; justify-content: center; gap: 40px; align-items: center;">
-  <img src="imgs/1036_gif.gif" alt="Video 1" width="40%">
-  <img src="imgs/1007_gif.gif" alt="Video 2" width="40%">
+  <img src="imgs/1036_gif.gif" alt="Video 1" style="width: min(40%, 400px);">
+  <img src="imgs/1007_gif.gif" alt="Video 2" style="width: min(40%, 400px);">
 </div>
 <p align="center">
   <em>
@@ -87,8 +87,8 @@ To assist with analysis, the planner’s prediction of the other agent’s state
 
 In the next two videos, the collision is caused by a deliberate maneuver of the other agent, which intentionally collides with the ego vehicle. While these incidents are clearly not the planner's fault, they are valuable for exposing its **limited ability to react to unexpected threats from behind**. Such behaviors can arise from not-so-uncommon real-world causes, including driver **distraction**, **falling asleep** at the wheel, or sudden health issues.
 <div style="display: flex; justify-content: center; gap: 40px; align-items: center;">
-  <img src="imgs/1062_gif.gif" alt="Video 1" width="40%">
-  <img src="imgs/1067_gif.gif" alt="Video 2" width="40%">
+  <img src="imgs/1062_gif.gif" alt="Video 1" style="width: min(40%, 400px);">
+  <img src="imgs/1067_gif.gif" alt="Video 2" style="width: min(40%, 400px);">
 </div>
 <p align="center">
   <em>
