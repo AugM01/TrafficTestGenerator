@@ -60,7 +60,7 @@ Three highway settings with different initial configurations of a single other v
   <img src="imgs/exp3_GP.png" alt="GP Mean 3" style="width:60%;">
 </div>
 <p style="text-align: center; margin-bottom: 30px;">
-  <em>Experiment 1: Other agent is in the same lane, but behind the AV.</em>
+  <em>Experiment 3: Other agent is in the same lane, but behind the AV.</em>
 </p>
 
 
