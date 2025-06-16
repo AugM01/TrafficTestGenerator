@@ -28,10 +28,11 @@ The framework is composed of three modules:
 - **Efficient discovery** of safety-critical interactions via BO over a low-dimensional domain.
 - **Planner-agnostic** design: applicable to any AV planner with minimal assumptions.
 
-
-### TL;DR
-Given a fixed (yet customizable) initial scene configuration, the framework automatically generates a **set of informative and safety-critical episodes** by optimizing the final goals of surrounding agents using Bayesian Optimization. These episodes are tailored to stress-test the AV planner in realistic, closed-loop simulations.
-
+<div style="background-color: #e6f2ff; border-radius: 10px; padding: 15px; border: 1px solid #b3d8ff; margin: 20px 0; color: #1a1a1a; font-weight: 400;">
+  <strong>TL;DR</strong><br>
+  Given a fixed (yet customizable) initial scene configuration, the framework automatically 
+  <strong>generates a set of informative and safety-critical episodes</strong> by optimizing the final goals of surrounding agents using Bayesian Optimization. These episodes are tailored to stress-test the AV planner in realistic, closed-loop simulations.
+</div>
 
 
 ## Experiments
