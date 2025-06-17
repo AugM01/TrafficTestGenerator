@@ -74,12 +74,9 @@ Three highway settings with different initial configurations of a single other v
 
 ### Examples of Generated Episodes
 
-Below are showed a few examples of generated episodes featuring a collision between the ego agent governed by the planner and one other agent governed by [ProSim](https://arxiv.org/abs/2409.05863). These samples are drawn from Experiments 2 and 3.
+Below are showed a few examples of generated episodes featuring a collision between the ego agent governed by the planner and one other agent governed by [ProSim](https://arxiv.org/abs/2409.05863). 
 
-In the first two videos, the collision occurs due to the other agent’s sudden braking and the planner’s incorrect assumption that the agent would maintain its speed. Such behaviors are common in real-world driving and can result from situations like an **animal crossing** or a **large pothole**.
-In both cases, the ego agent initiates a lane change to the right to reach its goal further along the adjacent lane.
-
-To assist with analysis, the planner’s prediction of the other agent’s state, updated at 2 Hz, is shown in **yellow**.
+The first two videos are drawn from Experiment 2, with the other agent starting front-right with respect to the planner. To assist with analysis, the planner’s prediction of the other agent’s state, updated at 2 Hz, is shown in **yellow**.
 
 <div style="display: flex; justify-content: center; gap: 40px; align-items: center;">
   <img src="imgs/1036_gif.gif" alt="Video 1" style="width: min(40%, 400px);">
@@ -91,8 +88,10 @@ To assist with analysis, the planner’s prediction of the other agent’s state
   </em>
 </p>
 
+In the first two videos, the collision occurs due to the other agent’s sudden braking and the planner’s incorrect assumption that the agent would maintain its speed. Such behaviors are common in real-world driving and can result from situations like an **animal crossing** or a **large pothole**.
+In both cases, the ego agent initiates a lane change to the right to reach its goal further along the adjacent lane.
 
-In the next two videos, the collision is caused by a deliberate maneuver of the other agent, which intentionally collides with the ego vehicle. While these incidents are clearly not the planner's fault, they are valuable for exposing its **limited ability to react to unexpected threats from behind**. Such behaviors can arise from not-so-uncommon real-world causes, including driver **distraction**, **falling asleep** at the wheel, or sudden health issues.
+The next two videos are drawn from experiment 3, with the other agent starting behind the planner.
 <div style="display: flex; justify-content: center; gap: 40px; align-items: center;">
   <img src="imgs/1062_gif.gif" alt="Video 1" style="width: min(40%, 400px);">
   <img src="imgs/1067_gif.gif" alt="Video 2" style="width: min(40%, 400px);">
@@ -100,5 +99,7 @@ In the next two videos, the collision is caused by a deliberate maneuver of the 
 <p align="center">
   <em>
     The other agent collides with the ego vehicle from behind, revealing the planner’s limited ability to react to unexpected rear threats.
-  <em>
+  </em>
 </p>
+
+In these two videos, the collision is caused by a deliberate maneuver of the other agent, which intentionally collides with the ego vehicle. While these incidents are clearly not the planner's fault, they are valuable for exposing its **limited ability to react to unexpected threats from behind**. Such behaviors can arise from not-so-uncommon real-world causes, including driver **distraction**, **falling asleep** at the wheel, or sudden health issues.
